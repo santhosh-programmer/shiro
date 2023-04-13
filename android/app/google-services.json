@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "121233207876",
+    "project_id": "shiro-e3ec9",
+    "storage_bucket": "shiro-e3ec9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121233207876:android:ccbb380e568e853bcc4211",
+        "android_client_info": {
+          "package_name": "com.example.shiro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "121233207876-al0kv9045ec417ts4du37kdllc5vchm8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0H_AHsAjUHmY_OEjx7v0sIP-iCcwl4v0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "121233207876-al0kv9045ec417ts4du37kdllc5vchm8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

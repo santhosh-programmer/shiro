@@ -1,8 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:shiro/views/home_page.dart';
+import 'package:shiro/views/auth/login_page.dart';
 
 Color appColor = Color(0xFF800000);
-void main() {
+bool loading = false;
+final styling = TextStyle(color: appColor);
+
+Future<void> main() async {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     title: 'Flutter Demo',
@@ -30,6 +37,6 @@ class Shiro extends StatefulWidget {
 class _ShiroState extends State<Shiro> {
   @override
   Widget build(BuildContext context) {
-    return HomePage();
+    return Login();
   }
 }
