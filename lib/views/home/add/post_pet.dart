@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:location/location.dart';
 import 'package:shiro/main.dart';
+import 'package:shiro/services/auth_services.dart';
+import 'package:shiro/services/auth_services_impl.dart';
+
+import '../../auth/login_page.dart';
 
 class NewPost extends StatefulWidget {
   const NewPost({Key? key}) : super(key: key);
@@ -72,7 +76,19 @@ class _NewPostState extends State<NewPost> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Form'),
+        title: Text('New Post'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                AuthServices imp = new AuthServiceImpl();
+                imp.signout();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Login()),
+                );
+              },
+              icon: Icon(Icons.logout))
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(

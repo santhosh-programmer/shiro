@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shiro/main.dart';
 import 'package:shiro/views/home/add/post_pet.dart';
 import 'package:shiro/views/home/adoption/adopt_new_page.dart';
-import 'package:shiro/views/home/funding/crown_funding_page.dart';
+import 'package:shiro/views/home/funding/crowd_funding_page.dart';
 import 'package:shiro/views/home/view_posts/feed_page.dart';
 import 'package:shiro/views/home/view_posts/top_posts_page.dart';
 

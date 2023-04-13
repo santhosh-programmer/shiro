@@ -59,7 +59,7 @@ class _LoginState extends State<Login> {
                 children: [
                   Center(
                     child: Text(
-                      'Student-Hub',
+                      'Finding Shiro',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: appColor,

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../services/auth_services.dart';
+import '../../../services/auth_services_impl.dart';
+import '../../auth/login_page.dart';
+
 class TopPosts extends StatefulWidget {
   const TopPosts({Key? key}) : super(key: key);
 
@@ -13,6 +17,18 @@ class _TopPostsState extends State<TopPosts> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Shiro-Verified"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                AuthServices imp = new AuthServiceImpl();
+                imp.signout();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Login()),
+                );
+              },
+              icon: Icon(Icons.logout))
+        ],
       ),
       body: Center(
         child: Text("Top posts"),

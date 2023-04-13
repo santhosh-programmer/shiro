@@ -4,19 +4,19 @@ import '../../../services/auth_services.dart';
 import '../../../services/auth_services_impl.dart';
 import '../../auth/login_page.dart';
 
-class Feed extends StatefulWidget {
-  const Feed({Key? key}) : super(key: key);
+class CrowdFunding extends StatefulWidget {
+  const CrowdFunding({Key? key}) : super(key: key);
 
   @override
-  State<Feed> createState() => _FeedState();
+  State<CrowdFunding> createState() => _CrowdFundingState();
 }
 
-class _FeedState extends State<Feed> {
+class _CrowdFundingState extends State<CrowdFunding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Shiro"),
+        title: Text("Crowd Funding"),
         actions: [
           IconButton(
               onPressed: () {
@@ -31,7 +31,7 @@ class _FeedState extends State<Feed> {
         ],
       ),
       body: Center(
-        child: Text("Posts"),
+        child: Text("Crowd Funding"),
       ),
     );
   }
