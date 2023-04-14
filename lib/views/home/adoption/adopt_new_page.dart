@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shiro/main.dart';
+import 'package:shiro/views/menus.dart';
 
 import '../../../services/auth_services.dart';
 import '../../../services/auth_services_impl.dart';
@@ -16,10 +17,7 @@ class Animal {
   String animalImage;
   String animalLocation;
   String animalSex;
-  Animal(
-      {required this.animalImage,
-      required this.animalLocation,
-      required this.animalSex});
+  Animal({required this.animalImage, required this.animalLocation, required this.animalSex});
 }
 
 class AdoptNew extends StatefulWidget {
@@ -121,19 +119,20 @@ class _AdoptNewState extends State<AdoptNew> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Adopt New"),
-        actions: [
-          IconButton(
-              onPressed: () {
-                AuthServices imp = AuthServiceImpl();
-                imp.signout();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Login()),
-                );
-              },
-              icon: const Icon(Icons.logout))
-        ],
+        // actions: [
+        //   IconButton(
+        //       onPressed: () {
+        //         AuthServices imp = AuthServiceImpl();
+        //         imp.signout();
+        //         Navigator.push(
+        //           context,
+        //           MaterialPageRoute(builder: (context) => const Login()),
+        //         );
+        //       },
+        //       icon: const Icon(Icons.logout))
+        // ],
       ),
+      drawer: const Menu(),
       body: Container(
         margin: const EdgeInsets.only(top: 15),
         height: double.infinity,
@@ -160,30 +159,20 @@ class _AdoptNewState extends State<AdoptNew> {
                               },
                               child: AnimatedContainer(
                                 duration: const Duration(milliseconds: 200),
-                                margin: index == 0
-                                    ? const EdgeInsets.only(left: 75)
-                                    : const EdgeInsets.only(left: 20),
+                                margin: index == 0 ? const EdgeInsets.only(left: 75) : const EdgeInsets.only(left: 20),
                                 width: 120,
                                 height: 42,
                                 decoration: BoxDecoration(
                                     border: Border.all(
-                                      color: current != index
-                                          ? Colors.black
-                                          : appColor,
+                                      color: current != index ? Colors.black : appColor,
                                       width: 2,
                                     ),
                                     borderRadius: BorderRadius.circular(8),
-                                    color: current != index
-                                        ? Colors.white
-                                        : appColor),
+                                    color: current != index ? Colors.white : appColor),
                                 child: Center(
                                   child: Text(
                                     items[index],
-                                    style: TextStyle(
-                                        color: current != index
-                                            ? Colors.black
-                                            : Colors.white,
-                                        fontWeight: FontWeight.bold),
+                                    style: TextStyle(color: current != index ? Colors.black : Colors.white, fontWeight: FontWeight.bold),
                                   ),
                                 ),
                               ),
@@ -234,8 +223,7 @@ class _AdoptNewState extends State<AdoptNew> {
                             const SizedBox(height: 20.0),
                             const Text('Is it your own pet?'),
                             Checkbox(
-                              fillColor:
-                                  MaterialStateProperty.all<Color>(appColor),
+                              fillColor: MaterialStateProperty.all<Color>(appColor),
                               value: _isMyPet,
                               onChanged: (value) {
                                 setState(() {
@@ -293,8 +281,7 @@ class _AdoptNewState extends State<AdoptNew> {
                                         _gender = value;
                                       });
                                     },
-                                    items: ['Male', 'Female', 'Other']
-                                        .map((gender) {
+                                    items: ['Male', 'Female', 'Other'].map((gender) {
                                       return DropdownMenuItem(
                                         value: gender,
                                         child: Text(gender),
@@ -324,8 +311,7 @@ class _AdoptNewState extends State<AdoptNew> {
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
-                                      content: Text(
-                                          'Image,Video,Location Mandatory'),
+                                      content: Text('Image,Video,Location Mandatory'),
                                     ),
                                   );
                                 }
@@ -351,55 +337,37 @@ class _AdoptNewState extends State<AdoptNew> {
                                     children: [
                                       Container(
                                         clipBehavior: Clip.hardEdge,
-                                        decoration: BoxDecoration(
-                                            color: appColor.withOpacity(0.05),
-                                            borderRadius:
-                                                BorderRadius.circular(20)),
+                                        decoration: BoxDecoration(color: appColor.withOpacity(0.05), borderRadius: BorderRadius.circular(20)),
                                         child: Row(
                                           children: [
-                                            Image(
-                                                width: 180,
-                                                height: 170,
-                                                fit: BoxFit.cover,
-                                                image: NetworkImage(
-                                                    animal.animalImage)),
+                                            Image(width: 180, height: 170, fit: BoxFit.cover, image: NetworkImage(animal.animalImage)),
                                             const SizedBox(
                                               width: 15,
                                             ),
                                             Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
                                                 Row(
                                                   children: [
                                                     const FaIcon(
-                                                      FontAwesomeIcons
-                                                          .locationPin,
+                                                      FontAwesomeIcons.locationPin,
                                                     ),
                                                     const SizedBox(width: 5),
                                                     Text(
                                                       animal.animalLocation,
-                                                      style: const TextStyle(
-                                                          color: Colors.black,
-                                                          fontWeight:
-                                                              FontWeight.bold),
+                                                      style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                                                     ),
                                                   ],
                                                 ),
                                                 const SizedBox(height: 15),
                                                 Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
+                                                  padding: const EdgeInsets.only(
                                                     left: 8.0,
                                                   ),
                                                   child: Text(
                                                     animal.animalSex,
-                                                    style: const TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color: Colors.grey),
+                                                    style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
                                                   ),
                                                 )
                                               ],

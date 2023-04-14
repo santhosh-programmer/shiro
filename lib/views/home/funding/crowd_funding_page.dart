@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shiro/main.dart';
 import 'package:shiro/views/home/funding/crowd_funding_description.dart';
+import 'package:shiro/views/menus.dart';
 import 'dart:math';
 import 'crowd_constants.dart';
 
@@ -202,6 +203,7 @@ class _CrowdFundingState extends State<CrowdFunding> {
     }
 
     return Scaffold(
+      drawer: const Menu(),
       backgroundColor: const Color.fromARGB(255, 237, 237, 237),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),

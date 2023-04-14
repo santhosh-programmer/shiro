@@ -6,6 +6,7 @@ import 'package:location/location.dart';
 import 'package:shiro/main.dart';
 import 'package:shiro/services/auth_services.dart';
 import 'package:shiro/services/auth_services_impl.dart';
+import 'package:shiro/views/menus.dart';
 
 import '../../auth/login_page.dart';
 
@@ -52,19 +53,19 @@ class _NewPostState extends State<NewPost> {
   }
 
   Future<void> _getCurrentLocation() async {
-    bool _serviceEnabled;
-    PermissionStatus _permissionGranted;
-    _serviceEnabled = await _location.serviceEnabled();
-    if (!_serviceEnabled) {
-      _serviceEnabled = await _location.requestService();
-      if (!_serviceEnabled) {
+    bool serviceEnabled;
+    PermissionStatus permissionGranted;
+    serviceEnabled = await _location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await _location.requestService();
+      if (!serviceEnabled) {
         return;
       }
     }
-    _permissionGranted = await _location.hasPermission();
-    if (_permissionGranted == PermissionStatus.denied) {
-      _permissionGranted = await _location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
+    permissionGranted = await _location.hasPermission();
+    if (permissionGranted == PermissionStatus.denied) {
+      permissionGranted = await _location.requestPermission();
+      if (permissionGranted != PermissionStatus.granted) {
         return;
       }
     }
@@ -76,38 +77,39 @@ class _NewPostState extends State<NewPost> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('New Post'),
-        actions: [
-          IconButton(
-              onPressed: () {
-                AuthServices imp = new AuthServiceImpl();
-                imp.signout();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Login()),
-                );
-              },
-              icon: Icon(Icons.logout))
-        ],
+        title: const Text('New Post'),
+        // actions: [
+        //   IconButton(
+        //       onPressed: () {
+        //         AuthServices imp = new AuthServiceImpl();
+        //         imp.signout();
+        //         Navigator.push(
+        //           context,
+        //           MaterialPageRoute(builder: (context) => const Login()),
+        //         );
+        //       },
+        //       icon: Icon(Icons.logout))
+        // ],
       ),
+      drawer: const Menu(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               ElevatedButton(
                 onPressed: _takePicture,
-                child: Text('Take Picture'),
+                child: const Text('Take Picture'),
               ),
               if (_image != null) Image.file(_image!),
               ElevatedButton(
                 onPressed: _takeVideo,
-                child: Text('Take Video'),
+                child: const Text('Take Video'),
               ),
-              if (_video != null) Text("Video Added"),
+              if (_video != null) const Text("Video Added"),
               TextField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Enter description',
                 ),
                 onChanged: (value) {
@@ -116,19 +118,19 @@ class _NewPostState extends State<NewPost> {
                   });
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               ElevatedButton(
                 onPressed: _getCurrentLocation,
-                child: Text('Get Current Location'),
+                child: const Text('Get Current Location'),
               ),
               if (_locationData != null)
                 Text(
                   'Latitude: ${_locationData!.latitude}, Longitude: ${_locationData!.longitude}',
                 ),
-              SizedBox(height: 20.0),
-              Text('Is it your own pet?'),
+              const SizedBox(height: 20.0),
+              const Text('Is it your own pet?'),
               Checkbox(
                 fillColor: MaterialStateProperty.all<Color>(appColor),
                 value: _isMyPet,
@@ -138,19 +140,19 @@ class _NewPostState extends State<NewPost> {
                   });
                 },
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               if (_isMyPet)
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Name',
                       ),
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Breed',
                       ),
                       onChanged: (value) {
@@ -159,9 +161,9 @@ class _NewPostState extends State<NewPost> {
                         });
                       },
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     DropdownButtonFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Age',
                       ),
                       value: _age,
@@ -177,9 +179,9 @@ class _NewPostState extends State<NewPost> {
                         );
                       }).toList(),
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     DropdownButtonFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Gender',
                       ),
                       value: _gender,
@@ -195,12 +197,12 @@ class _NewPostState extends State<NewPost> {
                         );
                       }).toList(),
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                   ],
                 ),
               ElevatedButton(
                 onPressed: () {
-                  if (_location != null && _image != null && _video != null) {
+                  if (_image != null && _video != null) {
                     _breed = null;
                     _age = null;
                     _gender = null;
@@ -210,20 +212,20 @@ class _NewPostState extends State<NewPost> {
                     _description = null;
 
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                         content: Text('Form submitted'),
                       ),
                     );
                     setState(() {});
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                         content: Text('Image,Video,Location Mandatory'),
                       ),
                     );
                   }
                 },
-                child: Text('Submit'),
+                child: const Text('Submit'),
               ),
             ],
           ),
