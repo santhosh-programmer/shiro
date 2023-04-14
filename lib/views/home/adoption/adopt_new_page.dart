@@ -16,21 +16,21 @@ class _AdoptNewState extends State<AdoptNew> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Adopt New"),
+        title: const Text("Adopt New"),
         actions: [
           IconButton(
               onPressed: () {
-                AuthServices imp = new AuthServiceImpl();
+                AuthServices imp = AuthServiceImpl();
                 imp.signout();
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const Login()),
                 );
               },
-              icon: Icon(Icons.logout))
+              icon: const Icon(Icons.logout))
         ],
       ),
-      body: Center(
+      body: const Center(
         child: Text("Adopt New"),
       ),
     );
