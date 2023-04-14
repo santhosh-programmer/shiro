@@ -15,7 +15,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  AuthServices imp = new AuthServiceImpl();
+  AuthServices imp = AuthServiceImpl();
   bool p = true;
   var openeye = Icons.remove_red_eye;
   var closeeye = Icons.visibility_off;
@@ -42,7 +42,7 @@ class _LoginState extends State<Login> {
             currentFocus.unfocus();
           }
         },
-        child: Container(
+        child: SizedBox(
           height: double.maxFinite,
           // decoration: BoxDecoration(
           //   image: DecorationImage(
@@ -52,7 +52,7 @@ class _LoginState extends State<Login> {
           // ),
           child: Center(
             child: Padding(
-              padding: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0),
+              padding: const EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -67,7 +67,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 36.0,
                   ),
                   TextFormField(
@@ -99,7 +99,7 @@ class _LoginState extends State<Login> {
                         ),
                         hintStyle: TextStyle(color: appColor)),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20.0,
                   ),
                   TextFormField(
@@ -154,8 +154,10 @@ class _LoginState extends State<Login> {
                   ),
                   TextButton(
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => MailOtp()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const MailOtp()));
                       },
                       child: Text(
                         'Forgot Password?',
@@ -166,10 +168,10 @@ class _LoginState extends State<Login> {
                           color: appColor,
                         ),
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 10.0,
                   ),
-                  Container(
+                  SizedBox(
                       width: double.infinity,
                       height: 54.0,
                       child: !loading
@@ -178,7 +180,7 @@ class _LoginState extends State<Login> {
                                   backgroundColor:
                                       MaterialStateProperty.all(appColor),
                                   shape: MaterialStateProperty.all(
-                                      StadiumBorder())),
+                                      const StadiumBorder())),
                               onPressed: () async {
                                 bool emailValid = RegExp(
                                         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -214,7 +216,8 @@ class _LoginState extends State<Login> {
                                       Navigator.pushAndRemoveUntil(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => HomePage()),
+                                            builder: (context) =>
+                                                const HomePage()),
                                         (Route<dynamic> route) => false,
                                       );
                                     } on Exception catch (e) {
@@ -240,7 +243,7 @@ class _LoginState extends State<Login> {
                                   }
                                 }
                               },
-                              child: Text(
+                              child: const Text(
                                 'Login',
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 25.0),
@@ -251,7 +254,7 @@ class _LoginState extends State<Login> {
                                 color: appColor,
                               ),
                             )),
-                  SizedBox(
+                  const SizedBox(
                     height: 30.0,
                   ),
                   Divider(
@@ -274,7 +277,8 @@ class _LoginState extends State<Login> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => RegisterNow()));
+                                      builder: (context) =>
+                                          const RegisterNow()));
                             },
                             child: Text(
                               'Register now',
