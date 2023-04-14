@@ -19,9 +19,10 @@ class _CrowdFundingDescriptionPageState extends State<CrowdFundingDescriptionPag
         child: Column(
           children: [
             const Image(
-              image: NetworkImage(dummyImgLink2),
+              image: NetworkImage(dummyImgLink3),
               height: 230,
-              fit: BoxFit.cover,
+              width: double.infinity,
+              fit: BoxFit.fill,
             ),
             Padding(
               padding: const EdgeInsets.all(12),

@@ -26,6 +26,7 @@ List<String> organization = [
 
 const dummyImgLink = 'https://img.freepik.com/free-photo/group-portrait-adorable-puppies_53876-64778.jpg';
 const dummyImgLink2 = 'https://i2-prod.mirror.co.uk/incoming/article26701634.ece/ALTERNATES/n615/0_Vet-and-Labrador-retriever.jpg';
+const dummyImgLink3 = 'https://www.ovrs.com/blog/wp-content/uploads/2019/05/OVRS-hospital-shutterstock_797543965.jpg';
 
 String issueDescription =
     '           "We are seeking funding to address the pressing issue of animal welfare in our community. The local animal shelter is overcrowded and understaffed, leading to inhumane living conditions for our furry friends. We aim to provide a safe haven for these animals, with adequate resources and medical attention. With your help, we can expand the shelter and hire trained professionals to take care of these animals. We also plan to raise awareness about animal welfare through educational programs in schools and community events. Every animal deserves a loving home, and with your support, we can make that a reality."s';
