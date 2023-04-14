@@ -7,18 +7,13 @@ import '../../auth/login_page.dart';
 import 'package:video_player/video_player.dart';
 
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 class FeedItemState {
-  int clickCount;
+  int _clickCount = 0;
   bool isBookmarked = false;
-
-  FeedItemState({this.clickCount = 0, this.isBookmarked=false});
-
-  bool get isbook => isBookmarked;
-
-  set isbook(bool value) {
-    isbook = value;
-  }
 }
+
 
 
 
@@ -42,7 +37,9 @@ class FeedItem {
 }
 
 class Feed extends StatefulWidget {
+
   const Feed({Key? key}) : super(key: key);
+
   @override
   _FeedState createState() => _FeedState();
 }
@@ -62,6 +59,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   void initState() {
     super.initState();
     _initializeVideoPlayer();
+
   }
 
   @override
@@ -145,12 +143,16 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
 }
 
 class _FeedState extends State<Feed> {
+  void initState() {
+    super.initState();
+    ;
+  }
 
   final List<FeedItem> feedItems = [    FeedItem(
     imageUrl: 'https://static.videezy.com/system/resources/thumbnails/000/040/716/small/DSCF2211-264.jpg',
     videoUrl: 'https://static.videezy.com/system/resources/previews/000/040/716/original/DSCF2211-264.mp4',
     location: 'New York, USA',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisi et arcu luctus, eu blandit magna ultrices. Nullam et lectus purus. Praesent eget neque dui. Nam suscipit massa quis arcu consectetur, vel fermentum ante.',
+    description: 'Breed: Mountain Cur\nGender: Male\nRegistry: AKC\nPersonality: family-oriented\n\nMeet Joey, a cute Mountain Cur puppy who’s ready to take on the world. Joey sports a family-oriented personality and carries a beautiful brown coat. In addition, Joey will arrive healthy, family raised, and good natured. We\'ve poured ourselves into raising this little gem and promise you a puppy coming from parents of faithful and clever personalities. If you’re browsing puppies for sale in Chennai, be sure to check out this charming little pup. We are experienced in shipping and can arrange details to get your puppy safely home if you’re not already in Chennai. We take pride and joy in raising high quality dogs. Give us a call today at 9999999999 and we’d love to answer any of your questions.',
     comments: [
       'Comment 1',
       'Comment 2',
@@ -162,7 +164,7 @@ class _FeedState extends State<Feed> {
       imageUrl: 'https://static.videezy.com/system/resources/thumbnails/000/040/717/small/DSCF2212-264.jpg',
       videoUrl: 'https://static.videezy.com/system/resources/previews/000/040/717/original/DSCF2212-264.mp4',
       location: 'Paris, France',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisi et arcu luctus, eu blandit magna ultrices. Nullam et lectus purus. Praesent eget neque dui. Nam suscipit massa quis arcu consectetur, vel fermentum ante.',
+      description: 'Breed: Mountain Cur\nGender: Male\nRegistry: AKC\nPersonality: friendly\n\nMeet Chico, a playful Mountain Cur puppy who’s ready to take on the world. Chico sports a friendly personality and carries a beautiful bi-colored coat. In addition, Chico will arrive healthy, loved, and family raised. We\'ve poured ourselves into raising this little gem and promise you a puppy coming from parents of faithful and clever personalities. If you’re browsing puppies for sale in Chennai, be sure to check out this charming little pup. We are experienced in shipping and can arrange details to get your puppy safely home if you’re not already in Chennai. We take pride and joy in raising high quality dogs. Give us a call today at 9999999999 and we’d love to answer any of your questions.',
       comments: [
         'Comment 1',
         'Comment 2',
@@ -273,11 +275,12 @@ class _FeedState extends State<Feed> {
                           icon: Icon(Icons.upload_sharp),
                           onPressed: () {
                             setState(() {
-                              feedItem.state.clickCount++;
+
+                              feedItem.state._clickCount++;
                             });
                           },
                         ),
-                        Text('${feedItem.state.clickCount}'),
+                        Text('${feedItem.state._clickCount}'),
                       ],
                     ),
                   ),
