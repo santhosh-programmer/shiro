@@ -12,6 +12,8 @@ import 'package:location/location.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'adopt_details.dart';
+
 class Animal {
   String animalImage;
   String animalLocation;
@@ -339,79 +341,104 @@ class _AdoptNewState extends State<AdoptNew> {
                   : Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: SingleChildScrollView(
-                        child: SizedBox(
-                          height: double.maxFinite,
-                          child: Expanded(
-                            child: ListView.builder(
-                                scrollDirection: Axis.vertical,
-                                itemCount: animals.length,
-                                itemBuilder: (ctx, index) {
-                                  final animal = animals[index];
-                                  return Column(
-                                    children: [
-                                      Container(
-                                        clipBehavior: Clip.hardEdge,
-                                        decoration: BoxDecoration(
-                                            color: appColor.withOpacity(0.05),
-                                            borderRadius:
-                                                BorderRadius.circular(20)),
-                                        child: Row(
-                                          children: [
-                                            Image(
-                                                width: 180,
-                                                height: 170,
-                                                fit: BoxFit.cover,
-                                                image: NetworkImage(
-                                                    animal.animalImage)),
-                                            const SizedBox(
-                                              width: 15,
-                                            ),
-                                            Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    const FaIcon(
-                                                      FontAwesomeIcons
-                                                          .locationPin,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: double.maxFinite,
+                              child: ListView.builder(
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: animals.length,
+                                  itemBuilder: (ctx, index) {
+                                    final animal = animals[index];
+                                    return Column(
+                                      children: [
+                                        Container(
+                                          clipBehavior: Clip.hardEdge,
+                                          decoration: BoxDecoration(
+                                              color: appColor.withOpacity(0.05),
+                                              borderRadius:
+                                                  BorderRadius.circular(20)),
+                                          child: Row(
+                                            children: [
+                                              Image(
+                                                  width: 180,
+                                                  height: 170,
+                                                  fit: BoxFit.cover,
+                                                  image: NetworkImage(
+                                                      animal.animalImage)),
+                                              const SizedBox(
+                                                width: 15,
+                                              ),
+                                              Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      const FaIcon(
+                                                        FontAwesomeIcons
+                                                            .locationPin,
+                                                      ),
+                                                      const SizedBox(width: 5),
+                                                      Text(
+                                                        animal.animalLocation,
+                                                        style: const TextStyle(
+                                                            color: Colors.black,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  const SizedBox(height: 15),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                      left: 8.0,
                                                     ),
-                                                    const SizedBox(width: 5),
-                                                    Text(
-                                                      animal.animalLocation,
+                                                    child: Text(
+                                                      animal.animalSex,
                                                       style: const TextStyle(
-                                                          color: Colors.black,
                                                           fontWeight:
-                                                              FontWeight.bold),
+                                                              FontWeight.bold,
+                                                          color: Colors.grey),
                                                     ),
-                                                  ],
-                                                ),
-                                                const SizedBox(height: 15),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                    left: 8.0,
                                                   ),
-                                                  child: Text(
-                                                    animal.animalSex,
-                                                    style: const TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color: Colors.grey),
+                                                  const SizedBox(height: 40),
+                                                  ElevatedButton(
+                                                    onPressed: () {
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                Adopt_Details(
+                                                                    animal:
+                                                                        animal),
+                                                          ));
+                                                    },
+                                                    style: ElevatedButton
+                                                        .styleFrom(
+                                                            foregroundColor:
+                                                                appColor),
+                                                    child: const Text(
+                                                      'View Details',
+                                                      style: TextStyle(
+                                                          color: Colors.white),
+                                                    ),
                                                   ),
-                                                )
-                                              ],
-                                            )
-                                          ],
+                                                ],
+                                              )
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      const SizedBox(height: 20)
-                                    ],
-                                  );
-                                }),
-                          ),
+                                        const SizedBox(height: 20)
+                                      ],
+                                    );
+                                  }),
+                            ),
+                          ],
                         ),
                       ),
                     )
